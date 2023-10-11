@@ -1,81 +1,75 @@
-# Airfare-prediction
+# Airfare Prediction Project  
+****A model designed to predict the airfare with an r2_score of 0.984781
 
-The Airfare Prediction project aims to address the challenge of dynamic pricing in the airline
-industry by developing a model that empowers consumers to predict airline ticket prices and
-gain insights into the key factors influencing those prices. With airline companies utilizing
-proprietary algorithms and hidden variables in their pricing strategies, there is a need for a
-transparent and consumer-centric approach to airfare prediction.In this project, machine
-learning algorithms are applied to a comprehensive dataset that includes various factors
-potentially affecting flight fares. The objective is to create a robust model capable of
-providing consumers with accurate price predictions and valuable insights into the significant
-features influencing ticket prices.
-By leveraging advanced machine learning techniques, the model successfully tackles the
-issue of price fluctuations and assists passengers in making informed decisions. Experimental
-results indicate that the proposed model exhibits reliable performance, demonstrating good
-accuracy when compared to actual price data from different models.The developed airfare
-prediction model empowers consumers by providing them with the ability to anticipate and
-plan for air travel expenses more effectively. This project contributes to a more transparent
-and consumer-friendly airfare pricing landscape, allowing individuals to make well-informed
-decisions and navigate the complexities of airline ticket prices.
+Welcome to the Airfare Prediction Project! This project aims to predict airfare prices based on historical data and various features. Whether you're a traveler looking to plan your next trip or a data scientist interested in exploring airfare prediction models, this project has something for you.
 
-Objective of the project:
 • To find the best fit model to analyse and predict ticket prices for upcoming flights.
 • To help customers in selecting the optimum time to book and the cheapest flight to
 the desired destination.
 • To study the factors which influence the fluctuations in the airfare prices and how
 they are related to the change in the prices.
+Techniques:
+1. Exploratory Data Analysis (EDA):
+**Descriptive Analytics **
+Duration Analysis: The average duration of flights in the dataset is approximately 12.22 hours, with a standard deviation of 7.19 hours. This indicates a considerable variability in flight durations.
+Price Analysis: The average ticket price in the dataset is approximately 20,889.66, with a standard deviation of 22,697.77. This indicates a significant variation in ticket prices.
 
-Description of the Problem:
-The problem at hand is to develop an airfare prediction analysis system. The aim is to create a
-model that can accurately predict the airfare for a given flight based on various factors and
-historical data. This information can be extremely valuable for both travellers and airlines to
-make informed decisions about flight bookings.
-For airlines, accurate and timely airfare predictions are crucial for effective revenue
-management. By being able to forecast airfare trends, airlines can make informed decisions
-regarding pricing adjustments, and marketing strategies. This helps them maximize their
-revenue potential while maintaining competitiveness in the market.
-Travellers often encounter the difficulty of finding cost-effective airfare options that match
-their travel itineraries. The dynamic nature of airfare prices adds complexity to their trip
-planning process and hinders their ability to make well-informed decisions regarding the
-optimal timing for booking flights. By providing reliable predictions for airfare, travellers can
-enhance their decision-making, identify attractive deals, and optimize their travel expenses.
-In addition to benefiting travelers and airlines, accurate airfare predictions can also greatly
-benefit travel agencies and online booking platforms. By integrating these predictions into
-their systems, they can unlock a range of advantages that enhance their services and
-operations.By leveraging accurate airfare predictions, travel agencies and online booking
-platforms can elevate their services, gain a competitive edge, and provide enhanced value to
-their customers. The integration of such predictions enables them to optimize pricing
-strategies, create customized travel packages, improve operational efficiency, and capitalize
-on market opportunities.
-Therefore, the main problem to be addressed in this project is to develop a robust and
-accurate airfare prediction model that can provide reliable forecasts of airfare prices. By
-doing so, it aims to assist airlines in optimizing their revenue management strategies, help
-travellers find the best flight deals, and enhance the efficiency of travel agencies and online
-booking platforms.
-Data Source:
-The project titled 'Airfare Prediction' utilizes a dataset obtained from
-https://www.kaggle.com This dataset
-consists of detailed information regarding various flights,
-Airline: The name of the airline company.
-Flight: plane's flight code.
-Source City: It represents the starting point of the journey.
-Departure Time: It provides information about the departure schedule.
-Stops: layovers between the source and destination cities. It indicates whether the flight is
-direct or has intermediate stops.
-Arrival Time: It provides information about the estimated arrival time.
-Destination City: City where the flight will land.
-Class: The information on seat class.
-Duration: the total time taken for the journey, including any layovers or stops.
-Days Left: It represents the number of days between the booking date and the departure date.
-Price: The information of the ticket price. This is the target variable for predictive analytics,
-and the aim is to predict this value based on the given features.
-The Dataset is well-structured and comprises 300153, offering a substantial volume of data
-for analysis.
-Description of the Analysis:
-This Airfare Prediction Project involved a comprehensive analysis that aimed to develop an
-accurate model for predicting airfare prices. The project progressed through various stages,
-encompassing data collection, preprocessing, exploratory data analysis, feature selection and
-engineering, model development and evaluation. The following is a summary of the key
-components and methodologies employed in each stage:
+**Missing Data Analysis**: Our dataset do not have any null/nan/missing values.
 
-normalization, were applied to ensure data quality and integrity.
+**Outliers Detection**: For the 'duration' column, there are 722 outliers, which are flights with a duration greater than 30 hours. These outliers might be a result of layover stops between flights, including overnight layovers and flight cancellations. It is reasonable to have such outliers, so there is no need to remove them.
+For the 'price' column, there are 602 outliers. These outliers might be due to natural price surges that occur, and they are not necessarily erroneous data points. Therefore, it is also not necessary to remove these outliers.It seems that the outliers detected in the 'duration' and 'price' columns are valid and represent natural occurrences in flight durations and pricing.
+
+**Feature encoding**
+One-Hot Encoding for Nominal Data- 'airline', 'source_city', 'departure_time', 'arrival_time', and 'destination_city'
+Label Encoding for Ordinal Data-'Stops' and 'Class'
+Feature Selection
+
+**Correlation Analysis**: There is strong correlation with Class and Price.
+**Mutual information** : The top features with higher mutual information scores were
+ExtraTreesRegressor: feature importance based on how much they contribute to the overall performance of the model.
+**Data Splitting **
+The dataset was divided into training and testing sets to assess the model's performance effectively 
+
+**Normalization for Model Evaluation**
+Min-Max normalization was applied.
+Hyperparameter tuning
+## Models
+**Model Building and Evaluation:** Three models, namely Linear Regression, Decision Tree,
+and Random Forest, were built and evaluated to predict flight prices. The evaluation included
+the calculation of mean absolute error (MAE) and R-squared (R2) score for each model. The
+results are summarized below:
+• **Linear Regression**:The Linear Regression model yielded an MAE of approximately
+4,485.83 and an R2 score of 0.90982.The MAE represents the average absolute
+difference between the predicted flight prices and the actual prices. In this case, a
+lower MAE indicates better model performance.The R2 score represents the
+proportion of the variance in the flight prices that can be explained by the model. A
+value closer to 1 indicates a better fit to the data.
+• **Decision Tree**: The Decision Tree model resulted in an MAE of around 1,183.92 and
+an R2 score of 0.975269.Compared to Linear Regression, the Decision Tree model
+achieved a lower MAE, indicating improved prediction accuracy.The higher R2 score
+suggests that the Decision Tree model explains a larger portion of the variance in the
+flight prices.
+
+• **Random Forest**:The Random Forest model exhibited the lowest MAE of
+approximately 1,082.35 and the highest R2 score of 0.984828.The Random Forest
+model outperformed both Linear Regression and Decision Tree models in terms of
+both MAE and R2 score.The lower MAE indicates better prediction accuracy, and the
+higher R2 score signifies that the Random Forest model explains a larger proportion
+of the variance in the flight prices.
+Based on these findings, the Random Forest model emerged as the most promising for
+predicting flight prices, as it achieved the lowest MAE and highest R2 score among the three
+models. However, it is crucial to note that model performance may vary depending on the
+specific dataset and problem domain. It is recommended to conduct further evaluation, fine-
+tuning, and validation to ensure the robustness and generalizability of the selected model.
+
+**Hyperparameter tuning**
+The hyperparameter tuning and evaluation Was done for three different regression models
+(Linear Regression, Decision Tree, and Random Forest) using the RandomizedSearchCV
+function from scikit-learn. The results show the mean absolute error (MAE) and R2 score for
+each model after hyperparameter tuning. The Linear Regression model has an MAE of
+approximately 4482.29 and an R2 score of 0.909839. The Decision Tree model has an MAE
+of around 1184.61 and an R2 score of 0.975359. The Random Forest model has the lowest
+MAE of approximately 1083.51 and the highest R2 score of 0.984781.
+Based on these results, the Random Forest model with hyperparameter tuning performs the
+best, as it has the lowest MAE and highest R2 score.
+Based on these findings, the Random Forest model emerged as the most promising for predicting flight prices, as it achieved the lowest MAE and highest R2 score among the three models.
